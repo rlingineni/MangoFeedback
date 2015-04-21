@@ -1,0 +1,43 @@
+body {
+    margin: 2;
+	border-color: azure;
+    padding: 2px;
+    overflow-x: hidden;
+    background-color: rgb(230, 200, 200);
+    height: 28px;
+    width: 500px;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+
+
+#LabelControl_id_1 {
+    font-size: 12px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    background: rgba(255,255,255,0.0);
+    color: rgba(0,0,0,1.0);
+    width: 198px;
+    float: left;
+    height: 24px;
+    position:relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.0);
+    border-radius: 0px;
+}
+
+#send {
+	
+	margin-top: 10px;
+	
+}
+
+#input {
+		
+	text-align: left;
+	left:100px;
+	
+}
