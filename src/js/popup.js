@@ -1,3 +1,66 @@
+var tabName;
+var emailID = "test";
+
+$.getJSON("http://www.rlingineni.me/WebList.json", function(data) {
+
+chrome.tabs.getSelected(null, function(tab) {
+    tabName = tab.url.toString();
+ emailID = search(tabName,data); 
+ console.log(emailID);
+  
+});
+    console.log(emailID);
+$("#dispatch").click(function() {
+    console.log(emailID);
+    var letter = $("#message").val();
+    console.log(letter);
+$.ajax({
+    type: "POST",
+  url: "https://mandrillapp.com/api/1.0/messages/send.json",
+  data: {
+    "key": "IAClCgxPhHiriL4aMrCN1w",
+    "message": {
+      "from_email": "rlingineni97@gmail.com",
+      "to": [
+          
+          {
+            "email": emailID,
+            "name": "RECIPIENT NAME (OPTIONAL)",
+            "type": "to"
+          }
+          ],
+      "autotext": "true",
+      "subject": "Mango Says Hi",
+      "html": letter
+    }
+      
+}
+ }).done(function(response) {
+   console.log(response); // if you're into that sorta thing
+ });
+});
+
+
+
+})
+
+
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.websites.length; i++) {
+       var final = myArray.websites[i].url;
+        if (nameKey.indexOf(final) > -1 ) {
+            //console.log("hello");
+            return myArray.websites[i].email;
+        }
+        else 
+        {
+            console.log(final);
+            console.log("nope, try again");
+        }
+    }
+}
+
+
 function openSearchUrl(url, searchTerm, openInNewTab, sendPostRequest, postData) {
 
     var newUrl;
@@ -10,17 +73,10 @@ function openSearchUrl(url, searchTerm, openInNewTab, sendPostRequest, postData)
     openUrl(newUrl, openInNewTab);
 }
 			
-chrome.tabs.getSelected(null, function(tab) {
-    myFunction(tab.url);
-});
+
 			
-				
-function myFunction(tablink) {
-  // do stuff here
-  console.log(tablink);
-	var sender = document.getElementById('string');
-	sender.innerHTML = tablink.toString();
-}
+			
+
 
 
 
